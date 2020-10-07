@@ -1,0 +1,27 @@
+/*  Sec tion container */
+
+section#main div.container {
+    margin-top: calc(var(--header_height) + 20px);
+    max-width: 980px;
+}
+
+section#main div.container div.feed-list {
+    padding: 20px;
+}
+
+section#main div.container div.feed-list div.list__users table.table_users {
+    width: 100%;
+    text-align: center;
+    border-collapse: separate;
+    font-size: 15px;
+    line-height: 18px;
+    color: var(--black_color);
+}
+
+section#main div.container div.feed-list div.list__users table.table_users th {
+    font-weight: bold;
+}
+
+section#main div.container div.feed-list div.list__users table.table_users td button {
+    color: var(--white_color);
+}

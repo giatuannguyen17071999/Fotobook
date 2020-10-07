@@ -1,0 +1,92 @@
+/*  Sec tion container */
+
+section#main div.container {
+    margin-top: calc(var(--header_height) + 20px);
+    max-width: 980px;
+}
+
+section#main div.container div.feed-list {
+    padding: 20px;
+}
+
+section#main div.container div.photo {
+    width: 200px;
+    position: relative;
+    height: 200px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+section#main div.container div.photo div.photo__image img {
+    width: 100%;
+    min-height: 200px;
+}
+
+section#main div.container div.photo div.photo__image,
+section#main div.container div.photo div.photo__image img {
+    width: 100%;
+    height: 100%;
+}
+
+section#main div.container div.photo .photo__status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 8px 0 10px;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--white_color);
+}
+
+section#main div.container div.photo .photo__status span {
+    font-size: 12px;
+    display: inline-block;
+    line-height: 30px;
+    max-width: 156px;
+    width: 100%;
+}
+
+section#main div.container div.photo .photo__status i {
+    font-size: 20px;
+}
+
+
+/* Section for responsive */
+
+@media (max-width: 940px and min-width:760px) {
+    section#main div.container div.feed-list {
+        /* padding: 20px 30px; */
+        padding: 30px;
+    }
+    section#main div.container div.photo {
+        margin-right: 30px;
+        margin-bottom: 30px;
+        width: 28%;
+        /* height: 225px; */
+    }
+}
+
+@media (max-width: 760px) {
+    section#main div.container div.photo {
+        margin-right: 20px;
+        margin-bottom: 20px;
+        width: 40%;
+        height: 225px;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    section#main div.container div.photo {
+        margin-bottom: 20px;
+        width: 60%;
+        height: 240px;
+        margin: 12px auto;
+    }
+}

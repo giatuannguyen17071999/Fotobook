@@ -1,0 +1,61 @@
+/*  Sec tion container */
+
+section#main div.container {
+    margin-top: calc(var(--header_height) + 20px);
+    max-width: 980px;
+    min-height: 680px;
+}
+
+section#main div.container div.edit__container {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+section#main div.container div.edit__container .edit__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section#main div.container div.edit__container .edit__header_title {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    flex: 1;
+    color: var(--black_color);
+}
+
+section#main div.container div.edit__container .edit__header__back__button {}
+
+section#main div.container div.edit__container form.edit__form {
+    border-radius: 5px;
+    width: 100%;
+}
+
+section#main div.container div.edit__container form.edit__form .form__edit__button {
+    justify-content: space-between;
+    display: flex;
+}
+
+section#main div.container div.edit__container form.edit__form .form__add__file {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+section#main div.container div.edit__container form.edit__form .form__add__file .form__add__image {
+    width: 100%;
+    height: 100%;
+}
+
+section#main div.container div.edit__container form.edit__form .form__add__file .form__add__btn {
+    background: #F2F2F2;
+    border: 2px dashed #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 50px;
+    line-height: 57px;
+    color: #BDBDBD;
+}

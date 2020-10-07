@@ -1,0 +1,177 @@
+/*  Sec tion container */
+
+section#main div.container {
+    margin-top: calc(var(--header_height) + 20px);
+    /* max-width: 980px; */
+}
+
+section#main div.container #header__photo__list {
+    padding: 20px 0;
+}
+
+section#main div.container #header__photo__list .header__button {
+    display: flex;
+    justify-content: center;
+}
+
+section#main div.container div.feed-list {
+    padding: 10px 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+/*  Section container */
+
+
+/* Section for list photo */
+
+#main .container .feed-list .feed__item {
+    margin-bottom: 16px;
+}
+
+#main .container .feed-list .card .card-image {
+    width: 100%;
+    height: 225px;
+    max-width: 500px;
+}
+
+#main .container .feed-list .card .card-body {
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+}
+
+#main .container .feed-list .card .card-horizontal {
+    background: var(--bg_feed_color);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px 0px 0px 3px;
+}
+
+#main .container .feed-list .card .card-horizontal .card__album {
+    width: 100%;
+    height: 225px;
+    max-width: 500px;
+    position: relative;
+}
+
+#main .container .feed-list .card .card-horizontal .card__album img {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    z-index: 2;
+    border: 1px solid #E0E0E0;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 0px;
+}
+
+#main .container .feed-list .card .card-horizontal .card__album .album__image_1 {
+    z-index: 2;
+}
+
+#main .container .feed-list .card .card-horizontal .card__album .album__image_2 {
+    transform: rotate(4deg);
+    z-index: 1;
+}
+
+#main .container .feed-list .card .card-horizontal .card__album .album__image_3 {
+    transform: rotate(10deg);
+    z-index: 0;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////// */
+
+
+/* /////////////////////////////////////////////////////////////////////////////// */
+
+#main .container .feed-list .card .card-body .feed__author {
+    line-height: 30px;
+    font-size: 13px;
+}
+
+#main .container .feed-list .card .card-body .feed__author .feed__author-avatar {
+    background: var(--primary_color);
+    width: 30px;
+    height: 30px;
+    color: var(--white_color);
+    text-align: center;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+#main .container .feed-list .card .card-body .feed__author .author_name {
+    font-weight: bold;
+    color: var(--primary_color);
+}
+
+#main .container .feed-list .card .card-body .feed__title {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 8px 0 6px 0;
+}
+
+#main .container .feed-list .card .card-body .feed__description {
+    font-size: 13px;
+    line-height: 15px;
+}
+
+#main .container .feed-list .card .card-body .feed__footer {
+    display: flex;
+    justify-content: space-between;
+    color: #b1a7a7;
+    align-items: baseline;
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+}
+
+#main .container .feed-list .card .card-body .feed__footer .feed__like span {
+    color: var(--primary_color);
+    font-size: 10px;
+    line-height: 12px;
+}
+
+#main .container .feed-list .card .card-body .feed__footer .feed__like span i {
+    color: #E0E0E0;
+}
+
+#main .container .feed-list .card .card-body .feed__footer .feed__time {
+    font-size: 10px;
+    line-height: 12px;
+    color: #BDBDBD;
+}
+
+
+/* Section for Photo modal */
+
+section#modal__photo #modal_photo_infor .modal-header {
+    border-bottom: 0;
+}
+
+section#modal__photo #modal_photo_infor #modeal__photo__title {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: var(--black_color);
+}
+
+section#modal__photo #modal_photo_infor .modal__photo__body {
+    width: 100%;
+    max-width: 750px;
+}
+
+section#modal__photo #modal_photo_infor .modal__photo__body .photo_slide_show .carousel-item {
+    /* max-height: 400px; */
+    /* min-height: 400px; */
+}
+
+section#modal__photo #modal_photo_infor .modal__photo__body .modal_photo_description {
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--black_color);
+    margin-top: 10px;
+}

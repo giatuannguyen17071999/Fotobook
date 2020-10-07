@@ -1,0 +1,110 @@
+/*  Sec tion container */
+
+section#main div.container {
+    margin-top: calc(var(--header_height) + 20px);
+    max-width: 980px;
+    min-height: 680px;
+}
+
+section#main div.container div.edit__container {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+section#main div.container div.edit__container .edit__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section#main div.container div.edit__container .edit__header_title {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    flex: 1;
+    color: var(--black_color);
+}
+
+section#main div.container div.edit__container .edit__header__back__button {}
+
+section#main div.container div.edit__container form.edit__form {
+    padding: 0 20px;
+    border-radius: 5px;
+    /* max-width: 1200px;
+    min-width: 600px; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 600px;
+    margin: 20px auto 0;
+}
+
+section#main div.container div.edit__container .edit__form .edit_avatar {
+    display: flex;
+    padding: 0;
+}
+
+section#main div.container div.edit__container .edit__form .edit_avatar div.edit__avatar__image {
+    width: 150px;
+    position: relative;
+    height: auto;
+    max-height: 150px;
+}
+
+section#main div.container div.edit__container .edit__form .edit_avatar div.edit__avatar__image img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+section#main div.container div.edit__container .edit__form .edit_avatar div.edit__avatar__image #btn__change_avatar {
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: var(--black_color);
+    border: none;
+    padding: 8px 20px;
+}
+
+section#main div.container div.edit__container .edit__form .edit_avatar div.edit__avatar__image #btn__change_avatar:focus {
+    outline: none;
+    border: none;
+}
+
+section#main div.container div.edit__container .edit__form .form-inline {
+    padding: 4px 0;
+}
+
+section#main div.container div.edit__container .edit__form .form-inline label {
+    justify-content: flex-end;
+}
+
+section#main div.container div.edit__container .edit__form .form-inline input {
+    justify-content: flex-start;
+}
+
+section#main div.container div.edit__container .edit__form .form-inline div.col-8 {
+    padding: 0;
+}
+
+section#main div.container div.edit__container .edit__form .form-inline .edit_infor_title {
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0;
+    line-height: 18px;
+    color: var(--primary_color);
+}
+
+section#main div.container div.edit__container .edit__form .edit__user__infor {
+    margin-top: 20px;
+}
+
+section#main div.container div.edit__container .edit__form .edit__user__password {
+    margin-top: 30px;
+}
