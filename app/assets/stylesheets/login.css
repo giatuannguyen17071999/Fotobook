@@ -46,6 +46,8 @@
     font-size: 60px;
     position: relative;
     z-index: 1;
+    width: 100%;
+    text-align: center;
 }
 
 #main .container .login__form .login__form-body .form__img::before {
@@ -60,7 +62,8 @@
 
 #main .container .login__form .login__form-body .form__img i {
     background-color: #c2c2bf;
-    padding: 24px;
+    padding: 25px;
+    font-size: 40px;
     border-radius: 50%;
 }
 
@@ -70,6 +73,12 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
+    max-width: 280px;
+}
+
+#main .container .login__form .login__form-body .login__form-main .login__form-input {
+    width: 100%;
 }
 
 #main .container .login__form .login__form-body .login__form-btn {
