@@ -1,0 +1,43 @@
+<% content_for :header do %>
+    <title> Manager Photo </title>
+    <%# <link rel="stylesheet" href="/assets/user/edit_profile.css">  %>
+    <%= stylesheet_link_tag '/assets/user/my_photo' %>
+<% end %>
+  <div class="container">
+    <div class="row feed-list py-3">
+            <% @photos.each do |photo| %>
+                <div class="photo">
+                    <div class="photo__status">
+                        <span class="ellipsis"> <%= photo.title %></span>
+                        <i class="far fa-edit"></i>
+                    </div>
+                    <div class="photo__image">
+                        <% if !current_user.is_admin? %>
+                            <% if photo.mode == :private_mode.to_s %>
+                                <div class="sharing_mode">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                            <% end %>
+                        <% end %>
+                          <%= link_to image_tag("Photos/baitapdautien1.jpg", alt: "image", class: "card-image"), edit_photo_path(photo) %>  
+                          <%#= link_to image_tag("Photos/#{photo.image}", alt: "image", class: "card-image"), edit_photo_path(photo) %>  
+                    </div>
+                </div>
+            <% end %>
+
+        <nav aria-label="Page navigation" id="feed__pagination">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>

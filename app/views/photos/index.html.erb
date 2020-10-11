@@ -1,35 +1,77 @@
-<p id="notice"><%= notice %></p>
+<% content_for :header do %>
+    <title> My Photo </title>
+    <%# <link rel="stylesheet" href="/assets/user/edit_profile.css">  %>
+    <%= stylesheet_link_tag '/assets/user/my_photo' %>
+<% end %>
 
-<h1>Photos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Mode</th>
-      <th>Album</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @photos.each do |photo| %>
-      <tr>
-        <td><%= photo.image %></td>
-        <td><%= photo.title %></td>
-        <td><%= photo.description %></td>
-        <td><%= photo.mode %></td>
-        <td><%= photo.album_id %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+ <div class="container">
+    <% if !current_user.is_admin? %>
+        <div id="header__photo__list">
+           <%= link_to 'Add New Photo', new_photo_path, class: "btn btn-success" %>
+        </div>
+        <div class="seperator"></div>
     <% end %>
-  </tbody>
-</table>
+    <div class="row feed-list py-3">                
+      <% @photos.each do |photo| %>
+              <div class="photo">
+                <div class="photo__status">
+                    <span class="ellipsis"> <%= photo.title %></span>
+                   <%= link_to edit_photo_path(photo) do %>  
+                         <i class="far fa-edit"></i>
+                    <% end %>
+                </div>
+                <div class="photo__image" data-toggle="modal" data-target="#modal_photo_infor">
+                   <% if !current_user.is_admin? %>
+                      <% if photo.mode == :private_mode.to_s %>
+                        <div class="sharing_mode">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                      <% end %>
+                   <% end %>
+                    <%= image_tag(photo.image_url, alt: "avatar", class: "img-fluid") %>
+                   <%#= image_tag("Photos/baitapdautien1.jpg", alt: "image", class: "card-image") %>  
+                   <%#= link_to image_tag("Photos/#{photo.image}", alt: "image", class: "card-image"), edit_photo_path(photo) %> 
+                </div>
+            </div>
+         <!-- Modal -->
+        <section id="modal__photo" aria-label="section for modal">
+            <div class="modal fade" id="modal_photo_infor" tabindex="-1" role="dialog" aria-labelledby="modal_photo_inforTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modeal__photo__title"><%= photo.title %> </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal__photo__body">
+                                <%= image_tag(photo.image_url, class: "modal__photo__image" ) %>
+                                <p class="modal_photo_description"> <%= photo.description %></p>
+                            </div>
+                        </div>
+                        <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+      <% end %>
 
-<br>
-
-<%= link_to 'New Photo', new_photo_path %>
+      <nav aria-label="Page navigation" id="feed__pagination">
+          <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+              </li>
+          </ul>
+      </nav>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'home_pages#index'
+  root to: 'users#feed_photos'
   devise_for :users
-
+  resources :users
   resources :photos
   resources :albums
 

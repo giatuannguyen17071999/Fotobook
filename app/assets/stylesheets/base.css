@@ -38,6 +38,14 @@ a {
     flex: 1 1 auto;
 }
 
+.card-body {
+    -ms-flex: 1 0.5 au;
+    flex: 1 0.5 300px;
+    min-height: 1px;
+    padding: 1.25rem;
+    min-width: 200px;
+}
+
 button.btn_primary,
 a.btn_primary {
     background: var(--primary_color);

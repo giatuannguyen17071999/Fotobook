@@ -1,42 +1,52 @@
-<%= form_with(model: photo, local: true) do |form| %>
-  <% if photo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
-
-      <ul>
-        <% photo.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: photo, local: true, class: "edit__form mt-2", id: "form_photo") do |form| %>
+    <div class="form-row mb-2">
+        <div class="col-12 col-md-6">
+            <div class="form-group col-md-10 col-12">
+                <%= form.label :title %>
+                <%= form.text_field :title, class: "form-control", id: "form__edit__title" %>
+            </div>
+            <div class="form-group col-md-6 col-10 mt-4">
+                <label for="form__edit__mode">Sharing mode</label>
+                <%= form.select(:mode, [ [:Private, :private_mode], [ :Public, :public_mode]], {}, { class: "form-control", id: "form__edit__mode" } ) %>
+            </div>
+        </div>
+        <div class="form-group col-12 col-md-6">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: "form-control", id: "form__edit__description" %>
+        </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_area :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mode %>
-    <%= form.number_field :mode %>
-  </div>
-
-  <div class="field">
-    <%= form.label :album_id %>
-    <%= form.text_field :album_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="form-group col-md-3 col-12">
+        <div class="form__add__file">
+            <%= image_tag(@photo.image_url, class: "form__add__image", alt: "image") if @photo.image? %>
+            <%= form.file_field :image %>
+            <%= form.hidden_field :image_cache %>
+            <%#= image_tag("Photos/#{photo.image}", class: "form__add__image", alt: "image") %>
+        </div>
+    </div>
+       <div class="form-group col-md-9 col-12">
+            <% if photo.errors.any? %>
+                <ul>
+                    <% photo.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            <% end %>
+        </div>
+        <div class="form-group col-md-3 col-12 form__edit__button">
+            <%= form.submit "Save", class: "btn btn-success" %>
+            <% if photo.persisted? %>
+                    <%= link_to  photo, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+                        <i class="far fa-trash-alt"> Delete </i>
+                    <% end %>
+            <% end %>
+        </div>
+     
 <% end %>
+
+
+
+
+ 
+
+
+

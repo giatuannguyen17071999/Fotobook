@@ -59,7 +59,7 @@ section#main div.container div.photo .photo__status i {
 
 /* Section for responsive */
 
-@media (max-width: 940px and min-width:760px) {
+@media (max-width: 940px) and (min-width: 760px) {
     section#main div.container div.feed-list {
         /* padding: 20px 30px; */
         padding: 30px;

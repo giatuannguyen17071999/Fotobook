@@ -1,6 +1,20 @@
-<h1>Editing Photo</h1>
+<% content_for :header do %>
+    <title> Edit Photo </title>
+    <%# <link rel="stylesheet" href="/assets/user/edit_profile.css">  %>
+    <%= stylesheet_link_tag '/assets/photo/edit_photo' %>
+<% end %>
+<%= content_for :script_link do %>
+    <%= javascript_pack_tag 'photo_validate', 'data-turbolinks-track': 'reload' %>
+<% end %>
 
-<%= render 'form', photo: @photo %>
-
-<%= link_to 'Show', @photo %> |
-<%= link_to 'Back', photos_path %>
+<div class="container">
+    <div class="row edit__container py-3">
+        <div class="edit__header">
+            <h3 class="edit__header_title"> Edit User Profile </h3>
+            <%= link_to 'Back', photos_path, class: "btn btn_primary edit__header__back__button" %>
+        </div>
+        <div class="seperator">
+        </div>
+        <%= render 'form', photo: @photo %>
+    </div>
+</div>

@@ -74,19 +74,21 @@ section#main div.container div.photo .photo__status i {
     font-size: 20px;
 }
 
+section#modal__photo #modal_photo_infor .modal__photo__body .modal__photo__image {
+    width: 100%;
+}
+
 
 /* Section for responsive */
 
-@media (max-width: 940px and min-width:760px) {
+@media (max-width: 940px) and (min-width: 760px) {
     section#main div.container div.feed-list {
-        /* padding: 20px 30px; */
         padding: 30px;
     }
     section#main div.container div.photo {
         margin-right: 30px;
         margin-bottom: 30px;
         width: 28%;
-        /* height: 225px; */
     }
 }
 

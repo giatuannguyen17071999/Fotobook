@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: Fotobook_production
-  username: Fotobook
-  password: <%= ENV['FOTOBOOK_DATABASE_PASSWORD'] %>
+  username: giatuannguyen17071999
+  password: Tommytuan17071999
