@@ -39,9 +39,9 @@ section#main div.container div.edit__container form.edit__form .form__edit__butt
 }
 
 section#main div.container div.edit__container form.edit__form .form__add__file {
-    width: 200px;
-    height: 200px;
-    border-radius: 5px;
+    width: 0;
+    height: 0;
+    border-radius: 0;
     margin-bottom: 40px;
 }
 

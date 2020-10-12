@@ -4,7 +4,18 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    if current_user.is_admin? 
+      @albums = Album.all
+    else
+      @albums = current_user.albums
+    end
+    @item_per_page = 20
+    @item_per_page = 40  if current_user.is_admin? 
+    unless @albums.kind_of?(Array)
+        @albums = @albums.page(params[:page]).per(@item_per_page)
+    else
+        @albums = Kaminari.paginate_array(@albums).page(params[:page]).per(@item_per_page)
+    end
   end
 
   # GET /albums/1
@@ -24,11 +35,11 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
+    @album = current_user.albums.create(album_params)
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to albums_url, notice: 'Album was successfully created.' }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new }
@@ -42,7 +53,7 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to @album, notice: 'Album was successfully updated.' }
+        format.html { redirect_to albums_url, notice: 'Album was successfully updated.' }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit }
@@ -69,6 +80,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:title, :description, :mode, :user_id)
+      params.require(:album).permit(:title, :description, :mode, {images: []})
     end
 end

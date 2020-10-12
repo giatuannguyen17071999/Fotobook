@@ -9,6 +9,14 @@ class PhotosController < ApplicationController
       else
         @photos = current_user.photos
       end
+      @item_per_page = 20
+      @item_per_page = 40  if current_user.is_admin? 
+      unless @photos.kind_of?(Array)
+          @photos = @photos.page(params[:page]).per(@item_per_page)
+      else
+          @photos = Kaminari.paginate_array(@photos).page(params[:page]).per(@item_per_page)
+      end
+      
   end
 
   # GET /photos/1

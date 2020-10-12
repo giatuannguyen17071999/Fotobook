@@ -8,5 +8,5 @@ class Photo < ApplicationRecord
   validates :title, :description, :mode, :image, presence: true
   validates :title, length: { maximum: 140 }
   validates :description, length: { maximum: 300 }
-  validates :mode, inclusion: {in: [:public_mode, :private_mode]}
+  validates :mode, inclusion: {in: [ "private_mode", "public_mode"]}
 end

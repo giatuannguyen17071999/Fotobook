@@ -178,6 +178,10 @@ header.header .header__navbar .header__content .navbar-nav .nav-item .header__ad
     text-decoration: none;
 }
 
+header.header .header__navbar .header__content .navbar-nav .nav-item .header__admin .admin_avatar {
+    /* height: var(--header_height); */
+}
+
 
 /* Section Sidebar Category  */
 

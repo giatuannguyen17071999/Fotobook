@@ -1,33 +1,86 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Albums</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Mode</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.title %></td>
-        <td><%= album.description %></td>
-        <td><%= album.mode %></td>
-        <td><%= album.user_id %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% content_for :header do %>
+    <title> My Album </title>
+    <%# <link rel="stylesheet" href="/assets/user/edit_profile.css">  %>
+    <%= stylesheet_link_tag '/assets/user/my_album' %>
+<% end %>
+<div class="container">
+    <% if !current_user.is_admin? %>
+        <div id="header__photo__list">
+           <%= link_to 'Add New Album', new_album_path, class: "btn btn-success" %>
+        </div>
+        <div class="seperator"></div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Album', new_album_path %>
+    <div class="row feed-list py-3">                
+      <% @albums.each do |album| %>
+            <div class="album">
+                <div class="album_title">
+                    <span class="ellipsis"> <%= album.title %> </span>
+                    <%= link_to edit_album_path(album) do %>
+                       <i class="far fa-edit"></i>
+                    <% end %>
+                </div>
+                <div class="album__image" data-toggle="modal" data-target="#modal_photo_infor">
+                    <% if !current_user.is_admin? %>
+                        <% if album.mode == :private_mode.to_s %>
+                            <div class="sharing_mode">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        <% end %>
+                    <% end %>
+                    <%= image_tag(album.images[0].url, class: "album__image_1") if album.images[0] %>
+                    <%= image_tag(album.images[1].url, class: "album__image_2") if album.images[1] %>
+                    <%= image_tag(album.images[2].url, class: "album__image_3") if album.images[2] %>
+                    <%# <img class="album__image_1" src="../images/Photos/baitapdautien1.jpg" alt="user_image" /> %>
+                </div>
+            </div>
+          <!-- Modal -->
+          <section id="modal__photo" aria-label="section for modal">
+              <div class="modal fade" id="modal_photo_infor" tabindex="-1" role="dialog" aria-labelledby="modal_photo_inforTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="modeal__photo__title">album.title </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              <div class="modal__photo__body">
+                                  <div id="photo_slide_show" class="carousel slide" data-ride="carousel">
+                                      <div class="carousel-inner">
+                                          <div class="carousel-item active">
+                                              <%= image_tag("Photos/colorize_cat_image.jpg", class: "d-block w-100", alt: "post image") %>
+                                          </div>
+                                          <div class="carousel-item ">
+                                              <%= image_tag("Photos/first_project.jpg", class: "d-block w-100", alt: "post image") %>
+                                          </div>
+                                          <div class="carousel-item">
+                                              <%= image_tag("Photos/HINHNEN.jpg", class: "d-block w-100", alt: "post image") %>
+                                          </div>
+                                      </div>
+                                      <a class="carousel-control-prev" href="#photo_slide_show" role="button" data-slide="prev">
+                                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                          <span class="sr-only">Previous</span>
+                                      </a>
+                                      <a class="carousel-control-next" href="#photo_slide_show" role="button" data-slide="next">
+                                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                          <span class="sr-only">Next</span>
+                                      </a>
+                                  </div>
+                                  <p class="modal_photo_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta perferendis officia expedita dolore obcaecati temporibus sit necessitatibus blanditiis fugiat vero.</p>
+                              </div>
+                          </div>
+                          <!-- <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                      </div> -->
+                      </div>
+                  </div>
+              </div>
+          </section>
+      <% end %>
+    
+    <%= paginate @albums %>
+     
+    </div>
+</div>

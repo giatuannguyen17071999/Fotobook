@@ -1,0 +1,96 @@
+<% content_for :header do %>
+    <%= stylesheet_link_tag '/assets/user/feed_album'%>
+    <%#= stylesheet_link_tag 'index'%>
+    <title> Home page </title>
+<% end %>
+<div class="container">
+    <div id="header__photo__list">
+        <div class="header__button">
+            <%= link_to 'PHOTO', root_path, class: "btn btn_primary_white" %>
+            <button class="btn btn_primary"> ALBUM </button>
+        </div>
+    </div>
+    <div class="row feed-list py-3">
+        <% @albums.each do |album| %>
+            <div class="col-lg-6 col-12 feed__item">
+                <div class="card">
+                    <div class="card-horizontal">
+                        <div class="img-square-wrapper card__album" data-toggle="modal" data-target="#modal_photo_infor">
+                            <%= image_tag(album.images[0].url, class: "album__image_1") if album.images[0] %>
+                            <%= image_tag(album.images[1].url, class: "album__image_2") if album.images[1] %>
+                            <%= image_tag(album.images[2].url, class: "album__image_3") if album.images[2] %>
+                        </div>
+                        <div class="card-body">
+                            <div class="feed__author">
+                            <% @user = User.find(album.user_id) %>
+                                <span class="feed__author-avatar"> <%= @user.first_name[0] << @user.last_name[0] %> </span>
+                                <span class="author_name">  <%= @user.first_name << " " << @user.last_name %> </span>
+                            </div>
+                            <h4 class="card-title feed__title"> <%= album.title %> </h4>
+                            <p class="card-text feed__description"> <%= album.description %> </p>
+                            <div class="feed__footer">
+                                <div class="feed__like">
+                                    <span>
+                                        <i class="fa fa-heart"></i>
+                                        1999
+                                    </span>
+                                </div>
+                                <div class="feed__time">
+                                    17/07/2020
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <section id="modal__photo" aria-label="section for modal">
+                <div class="modal fade" id="modal_photo_infor" tabindex="-1" role="dialog" aria-labelledby="modal_photo_inforTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modeal__photo__title"> <%= album.title %> </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal__photo__body">
+                                    <div id="photo_slide_show" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <%= image_tag("Photos/colorize_cat_image.jpg", class: "d-block w-100", alt: "post image") %>
+                                            </div>
+                                            <div class="carousel-item ">
+                                                <%= image_tag("Photos/first_project.jpg", class: "d-block w-100", alt: "post image") %>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <%= image_tag("Photos/HINHNEN.jpg", class: "d-block w-100", alt: "post image") %>
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#photo_slide_show" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#photo_slide_show" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <p class="modal_photo_description"> <%= album.description %> </p>
+                                </div>
+                            </div>
+                            <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <% end %>
+        
+        <%= paginate @albums %>
+
+</div>

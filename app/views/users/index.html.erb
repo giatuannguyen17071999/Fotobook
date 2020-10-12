@@ -4,72 +4,40 @@
     <%= stylesheet_link_tag '/assets/admin/manager_users' %>
 <% end %>
  <div class="container">
-            <div class="row feed-list py-3">
-                <div class="table-responsive list__users">
-                    <table class="table-light table_users ">
-                        <thead>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Last Login</th>
-                            <th></th>
+     <div class="row feed-list py-3">
+        <div class="table-responsive list__users">
+            <table class="table-light table_users ">
+                <thead>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Last Login</th>
+                    <th></th>
 
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="5">
-                                    <hr>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tuan 1</td>
-                                <td> Nguyen </td>
-                                <td> tuannguyen@gmail.com</td>
-                                <td> 10:30 AM 17/07/2020 </td>
-                                <td>
-                                    <a href="edit_userprofile.html" class="btn btn-success"> Edit</a>
-                                    <button class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tuan 2</td>
-                                <td> Nguyen </td>
-                                <td> tuannguyen@gmail.com</td>
-                                <td> 10:30 AM 17/07/2020 </td>
-                                <td>
-                                    <a href="edit_userprofile.html" class="btn btn-success"> Edit</a>
-                                    <button class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tuan 3</td>
-                                <td> Nguyen </td>
-                                <td> tuannguyen@gmail.com</td>
-                                <td> 10:30 AM 17/07/2020 </td>
-                                <td>
-                                    <a href="edit_userprofile.html" class="btn btn-success"> Edit</a>
-                                    <button class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-
-                <nav aria-label="Page navigation" id="feed__pagination">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5">
+                            <hr>
+                        </td>
+                    </tr>
+                    <% @users.each do |user| %>
+                        <tr>
+                            <td><%= user.first_name %></td>
+                            <td> <%= user.last_name %> </td>
+                            <td> <%= user.email %> </td>
+                            <td> <%= user.last_sign_in_at %> </td>
+                            <td>
+                                <%= link_to 'Edit', edit_user_path(user), class: "btn btn-success" %>
+                                <%= link_to 'Delete', user, method: :delete, data: {confirm: 'Are you sure' }, class: "btn btn-danger" %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
         </div>
+
+        <%= paginate @users %>
+
+    </div>
+</div>

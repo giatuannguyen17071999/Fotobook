@@ -2,6 +2,16 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
+# View for pagination
+gem 'bootstrap-kaminari-views'
+
+gem 'jquery-rails'
+
+gem 'bootstrap', '~> 5.0.0.alpha1'
+
+gem 'bootstrap-sass'
+
+gem 'kaminari'
 
 gem 'carrierwave', '~> 2.0'
 

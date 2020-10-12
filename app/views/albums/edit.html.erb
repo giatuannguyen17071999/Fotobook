@@ -1,6 +1,20 @@
-<h1>Editing Album</h1>
+<% content_for :header do %>
+    <title> Edit Album </title>
+    <%# <link rel="stylesheet" href="/assets/user/edit_profile.css">  %>
+    <%= stylesheet_link_tag '/assets/album/edit_album' %>
+<% end %>
+<%= content_for :script_link do %>
+    <%= javascript_pack_tag 'album_validate', 'data-turbolinks-track': 'reload' %>
+<% end %>
 
-<%= render 'form', album: @album %>
-
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>
+<div class="container">
+    <div class="row edit__container py-3">
+        <div class="edit__header">
+            <h3 class="edit__header_title"> Edit Album </h3>
+            <%= link_to 'Back', albums_path, class: "btn btn_primary edit__header__back__button" %>
+        </div>
+        <div class="seperator">
+        </div>
+        <%= render 'form', album: @album %>
+    </div>
+</div>
