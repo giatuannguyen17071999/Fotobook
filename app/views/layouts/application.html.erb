@@ -16,14 +16,7 @@
   <body>
     <header class="container-fluid header">
         <nav class="navbar navbar-expand-lg nabar-dark header__navbar  navbar-dark">
-            <% if user_signed_in? %>
-              <% if current_user.is_admin? %>
-                <%= link_to 'Fotobook Admin', photos_path, class: 'navbar-brand' %>
-              <% else %>
-                <%= link_to 'Fotobook', root_path, class: 'navbar-brand' %>
-              <% end %>
-
-            <% end %>
+            <%= header_logo_tag({class: "navbar-brand"}) %>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,25 +28,9 @@
 
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <%# <a class="nav-link" href="login.html">Login</a> %>
-                        <% if user_signed_in? %>
-                          <div class="header__admin">
-                            <%= link_to edit_user_registration_path, class: 'admin_name admin_avatar mr-3' do %>
-                                <% if current_user.avatar? %>
-                                    <%= image_tag current_user.avatar_url, class: "w-100" %>
-                                <% else %>
-                                    <span class="admin_avatar mr-2"> <%= current_user.first_name[0] << current_user.last_name[0] %> </span>
-                                <% end %>
-                            <% end %>
-                            <%= link_to  "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path, :class => 'admin_name mr-5' %> 
-                            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
-                         </div>
-                        <% else %>
-                            <div class="header__admin">
-                              <%#= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %> 
-                              <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
-                           </div>
-                        <% end %>                          
+                      <div class="header__admin">
+                         <%= signin_signout_tag %>                
+                      </div>
                     </li>
                 </ul>
             </div>
@@ -63,44 +40,8 @@
     <section id="main" aria-label="section for main content">
         <label for="input_open_category" class="label_open_category"> + </label>
         <input name="input_open_category" id="input_open_category" type="checkbox" hidden>
-    <% if user_signed_in? %>
-      <% if current_user.is_admin? %>
-        <nav class="category">
-            <%= link_to 'Manager Photos', photos_path, class: "category__item active"%>
-            <%= link_to 'Manager Albums', albums_path, class: "category__item "%>
-            <%= link_to 'Manager Users', users_path, class: "category__item "%>
-        </nav>
-        <nav class="category_mobile">
-          <%= link_to photos_path, class: "category__item active" do %>
-             <i class="fas fa-2x fa-image"></i>
-          <% end %>
-          <%= link_to albums_path, class: "category__item " do %>
-            <i class="fas fa-2x fa-images"></i>
-          <% end %>
-          <%= link_to users_path, class: "category__item " do %>
-            <i class="fas fa-2x fa-user"></i>
-          <% end %>
-        </nav>
-      <% else %>
-        <nav class="category">
-          <%= link_to 'Feeds', root_path, class: "category__item active"%>
-            <%= link_to 'My Photos', photos_path, class: "category__item "%>
-            <%= link_to 'My Albums', albums_path, class: "category__item "%>
-        </nav>
-        <nav class="category_mobile">
-          <%= link_to photos_path, class: "category__item active" do %>
-             <i class="fas fa-2x fa-comment-alt"></i>
-          <% end %>
-          <%= link_to photos_path, class: "category__item active" do %>
-             <i class="fas fa-2x fa-image"></i>
-          <% end %>
-          <%= link_to albums_path, class: "category__item " do %>
-            <i class="fas fa-2x fa-images"></i>
-          <% end %>
-        </nav>
-      <% end %>
-    <% end %>
-    <%= yield %>
+        <%= sidebar_menu_tag %>
+        <%= yield %>
     </section>
     <% if notice %>
       <p id="notify" class="d-none" ><%= notice %></p>

@@ -4,12 +4,7 @@
     <%= stylesheet_link_tag '/assets/user/my_album' %>
 <% end %>
 <div class="container">
-    <% if !current_user.is_admin? %>
-        <div id="header__photo__list">
-           <%= link_to 'Add New Album', new_album_path, class: "btn btn-success" %>
-        </div>
-        <div class="seperator"></div>
-    <% end %>
+    <%= btn_add_new "Add New Album", new_album_path %>
     <div class="row feed-list py-3">                
       <% @albums.each do |album| %>
             <div class="album">
@@ -20,16 +15,8 @@
                     <% end %>
                 </div>
                 <div class="album__image" data-toggle="modal" data-target="#modal_photo_infor">
-                    <% if !current_user.is_admin? %>
-                        <% if album.mode == :private_mode.to_s %>
-                            <div class="sharing_mode">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                        <% end %>
-                    <% end %>
-                    <%= image_tag(album.images[0].url, class: "album__image_1") if album.images[0] %>
-                    <%= image_tag(album.images[1].url, class: "album__image_2") if album.images[1] %>
-                    <%= image_tag(album.images[2].url, class: "album__image_3") if album.images[2] %>
+                    <%= show_private_icons(album) %>
+                    <%= show_album_image(album) %>
                     <%# <img class="album__image_1" src="../images/Photos/baitapdautien1.jpg" alt="user_image" /> %>
                 </div>
             </div>

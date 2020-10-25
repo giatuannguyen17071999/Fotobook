@@ -24,13 +24,7 @@
         </div>
     </div>
        <div class="form-group col-md-9 col-12">
-            <% if photo.errors.any? %>
-                <ul>
-                    <% photo.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                    <% end %>
-                </ul>
-            <% end %>
+        <%= form_errors(photo) %>
         </div>
         <div class="form-group col-md-3 col-12 form__edit__button">
             <%= form.submit "Save", class: "btn btn-success" %>

@@ -5,12 +5,7 @@
 <% end %>
 
  <div class="container">
-    <% if !current_user.is_admin? %>
-        <div id="header__photo__list">
-           <%= link_to 'Add New Photo', new_photo_path, class: "btn btn-success" %>
-        </div>
-        <div class="seperator"></div>
-    <% end %>
+    <%= btn_add_new  'Add New Photo', new_photo_path %>
     <div class="row feed-list py-3">                
       <% @photos.each do |photo| %>
               <div class="photo">
@@ -21,16 +16,8 @@
                     <% end %>
                 </div>
                 <div class="photo__image" data-toggle="modal" data-target="#modal_photo_infor">
-                   <% if !current_user.is_admin? %>
-                      <% if photo.mode == :private_mode.to_s %>
-                        <div class="sharing_mode">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                      <% end %>
-                   <% end %>
+                    <%= show_private_icons(photo) %>
                     <%= image_tag(photo.image_url, alt: "avatar", class: "img-fluid") %>
-                   <%#= image_tag("Photos/baitapdautien1.jpg", alt: "image", class: "card-image") %>  
-                   <%#= link_to image_tag("Photos/#{photo.image}", alt: "image", class: "card-image"), edit_photo_path(photo) %> 
                 </div>
             </div>
          <!-- Modal -->

@@ -71,13 +71,7 @@
 
       </div>
       <div class="form-inline">
-            <% if @user.errors.any? %>
-                <ul class="list-unstyled row w-100 mb-0 mt-3">
-                <% @user.errors.full_messages.each do |message| %>
-                    <li class="error col-12 col-sm-8 offset-sm-4"><%= message %></li>
-                <% end %>
-                </ul>
-            <% end %>
+            <%= form_errors(@user, { ul_class: "list-unstyled row w-100 mb-0 mt-3", li_class: "error col-12 col-sm-8 offset-sm-4" })%>
       </div>
     <% end %>
 

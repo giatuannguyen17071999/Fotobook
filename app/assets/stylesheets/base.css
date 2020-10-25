@@ -228,6 +228,7 @@ section#main nav.category_mobile {
     justify-content: flex-start;
     animation: zoomToShow 0.3s;
     padding: 20px 10px;
+    z-index: 10;
 }
 
 section#main nav.category_mobile a {

@@ -12,9 +12,9 @@ class User < ApplicationRecord
   enum status: [:inactive, :active]
 
   validates :first_name, :last_name, presence: true
-  validates :first_name, :last_name, length: { maximum: 25 }
-  validates :email, length: { maximum: 255 }
+  validates :first_name, :last_name, length: { maximum: CONSTANTS::User::MAX_LENGTH_NAME }
+  validates :email, length: { maximum: CONSTANTS::User::MAX_LENGTH_EMAIL }
   validates :email, uniqueness: true
-  validates :password, length: { maximum: 64 }
+  validates :password, length: { maximum: CONSTANTS::User::MAX_LENGTH_PASS }
 
 end

@@ -11,10 +11,10 @@ class AlbumsController < ApplicationController
     end
     @item_per_page = 20
     @item_per_page = 40  if current_user.is_admin? 
-    unless @albums.kind_of?(Array)
-        @albums = @albums.page(params[:page]).per(@item_per_page)
+    if @albums.kind_of?(Array)
+      @albums = Kaminari.paginate_array(@albums).page(params[:page]).per(@item_per_page)
     else
-        @albums = Kaminari.paginate_array(@albums).page(params[:page]).per(@item_per_page)
+      @albums = @albums.page(params[:page]).per(@item_per_page)
     end
   end
 

@@ -16,9 +16,7 @@
                 <div class="card">
                     <div class="card-horizontal">
                         <div class="img-square-wrapper card__album" data-toggle="modal" data-target="#modal_photo_infor">
-                            <%= image_tag(album.images[0].url, class: "album__image_1") if album.images[0] %>
-                            <%= image_tag(album.images[1].url, class: "album__image_2") if album.images[1] %>
-                            <%= image_tag(album.images[2].url, class: "album__image_3") if album.images[2] %>
+                            <%= show_album_image(album) %>
                         </div>
                         <div class="card-body">
                             <div class="feed__author">

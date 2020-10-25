@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   get '(page/:page)', to: 'users#feed_photos'
 
   get '/feed/albums', to: 'users#feed_albums'
+  
   devise_for :users
-
-
+  
   resources :users, concerns: :paginatable
   resources :photos, concerns: :paginatable
   resources :albums, concerns: :paginatable
