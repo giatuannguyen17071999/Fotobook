@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_user, only: [:edit, :update, :destroy]
     before_action :set_item_per_page, only: [:feed_albums, :feed_photos]
 

@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
     helper AlbumsHelper, PhotosHelper, UsersHelper
 
     before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :authenticate_user!
     @param_list = [:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :status, :avatar, :file, :images_cache]
     private
     def authenticate_user!(opts={})
