@@ -19,6 +19,10 @@
  *= require index
  *= require login
  *= require signup
+ *= require admin/*
+ *= require album/*
+ *= require photo/*
+ *= require user/*
  *
  *
  */
@@ -42,5 +46,3 @@
 @import "photo/*";
 @import "user/*";
 @import "*";
-@import "user/feed_photos.css";
-@import "user/feed_album";
