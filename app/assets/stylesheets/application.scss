@@ -19,10 +19,7 @@
  *= require index
  *= require login
  *= require signup
- *= require admin/*
- *= require album/*
- *= require photo/*
- *= require user/*
+ *= require_self
  *
  *
  */
