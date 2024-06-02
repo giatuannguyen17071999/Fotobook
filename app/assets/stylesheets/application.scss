@@ -10,29 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require albums
- *= require home_pages
- *= require photos
- *= require scaffolds
- *= require users
- *= require base
- *= require index
- *= require login
- *= require signup
- *= require_self
- *= require admin/edit_userprofile
- *= require admin/index
- *= require admin/manager_album
- *= require admin/manager_users
- *= require album/edit_album
- *= require album/new_album
- *= require photo/edit_photo
- *= require photo/new_photo
- *= require user/edit_profile
- *= require user/feed_album
- *= require user/feed_photos
- *= require user/my_album
- *= require user/my_photo
  *
  *
  */
