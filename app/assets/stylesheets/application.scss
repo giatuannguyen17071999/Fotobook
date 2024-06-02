@@ -11,6 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *
+ *= require_tree ./admin
+ *= require_tree ./album
+ *= require_tree ./photo
+ *= require_tree ./user
  *
  */
 
