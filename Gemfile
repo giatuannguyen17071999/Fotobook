@@ -52,7 +52,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Auto Deployment
-  gem 'capistrano', require: false
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
   gem "bcrypt_pbkdf", require: false
   gem "ed25519", require: false
 end
